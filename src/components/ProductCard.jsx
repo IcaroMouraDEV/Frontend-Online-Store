@@ -1,15 +1,15 @@
 // req5
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
 class ProductCard extends Component {
   render() {
     const { name, img, price } = this.props;
     return (
-      <div>
-        <p data-testid="product">{ name }</p>
-        <img data-testid="product" src={ img } alt={ name } />
-        <p data-testid="product">{price}</p>
+      <div data-testid="product">
+        <p>{ name }</p>
+        <img src={ img } alt={ name } />
+        <p>{price}</p>
       </div>
     );
   }

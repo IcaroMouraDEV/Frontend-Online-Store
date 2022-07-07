@@ -6,32 +6,40 @@ import ProductCard from './ProductCard';
 class Main extends React.Component {
   constructor() {
     super();
-    this.state = { };
+    this.state = { searched: false, searchValue: '' };
   }
 
   handleClick = async () => {
-    const products = await getProductsFromCategoryAndQuery();
-    console.log(products);
-    products.map((product) => ({
+    const { searchValue } = this.state;
+    const res = await getProductsFromCategoryAndQuery('', searchValue);
+    const products = res.results.map((product) => ({
       name: product.title,
       img: product.thumbnail,
       price: product.price,
     }));
-    this.setState({ products });
+    this.setState({ products, searched: true });
+  }
+
+  handleChange = ({ target }) => {
+    this.setState({ searchValue: target.value });
   }
 
   render() {
-    const { searched } = this.props;
-    const { products } = this.state;
+    // const { searched } = this.props;
+    const { products, searched, searchValue } = this.state;
     return (
       <div>
         <div>
-          <input
-            type="text"
-            name=""
-            id=""
-            data-testid="query-input"
-          />
+          <label htmlFor="search">
+            <input
+              type="text"
+              name="search"
+              id="search"
+              value={ searchValue }
+              data-testid="query-input"
+              onChange={ this.handleChange }
+            />
+          </label>
           <button
             type="button"
             data-testid="query-button"
