@@ -6,9 +6,6 @@ class Main extends React.Component {
     const { searched } = this.props;
     return (
       <div>
-        <label htmlFor="sim">
-          <input type="text" id="sim" />
-        </label>
         {
           searched ? (
             <p>sim</p>
