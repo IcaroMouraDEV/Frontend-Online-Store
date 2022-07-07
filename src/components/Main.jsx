@@ -1,19 +1,23 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { getProductsFromCategoryAndQuery } from '../services/api';
+import ProductCard from './ProductCard';
 
 class Main extends React.Component {
   constructor() {
     super();
-    this.state = {
-
-    };
+    this.state = { };
   }
 
   handleClick = async () => {
-    const res = await getProductsFromCategoryAndQuery();
-    console.log(res);
-    this.setState({ products: res });
+    const products = await getProductsFromCategoryAndQuery();
+    console.log(products);
+    products.map((product) => ({
+      name: product.title,
+      img: product.thumbnail,
+      price: product.price,
+    }));
+    this.setState({ products });
   }
 
   render() {
@@ -38,7 +42,7 @@ class Main extends React.Component {
         </div>
         {
           searched ? (
-            products.map((product) => <ProductCard  {...product} />)
+            products.map((product, index) => <ProductCard key={ index } { ...product } />)
           ) : (
             <p data-testid="home-initial-message">
               Digite algum termo de pesquisa ou escolha uma categoria.
