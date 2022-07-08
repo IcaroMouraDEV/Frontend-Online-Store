@@ -21,6 +21,7 @@ class Home extends React.Component {
       name: product.title,
       img: product.thumbnail,
       price: product.price,
+      id: product.id,
     }));
     this.setState({ products, searched: true });
   }
