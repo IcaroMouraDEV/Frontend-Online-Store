@@ -1,31 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-// import { getProductsFromCategoryAndQuery } from '../services/api';
 import ProductCard from './ProductCard';
 
 class Main extends React.Component {
-  // constructor() {
-  //   super();
-  //   this.state = { searched: false, searchValue: '' };
-  // }
-
-  // handleClick = async () => {
-  //   const { searchValue } = this.state;
-  //   const res = await getProductsFromCategoryAndQuery('', searchValue);
-  //   const products = res.results.map((product) => ({
-  //     name: product.title,
-  //     img: product.thumbnail,
-  //     price: product.price,
-  //   }));
-  //   this.setState({ products, searched: true });
-  // }
-
-  // handleChange = ({ target }) => {
-  //   this.setState({ searchValue: target.value });
-  // }
-
   render() {
-    // const { searched } = this.props;
     const { searched, products, handleClick, handleChange, searchValue } = this.props;
     return (
       <div>
