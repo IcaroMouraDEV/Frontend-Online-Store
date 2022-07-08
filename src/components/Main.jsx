@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 import ProductCard from './ProductCard';
+import SideBar from './SideBar';
 
 class Main extends React.Component {
   constructor() {
@@ -57,6 +58,7 @@ class Main extends React.Component {
             </p>
           )
         }
+        <SideBar />
       </div>
     );
   }
