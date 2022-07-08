@@ -1,34 +1,19 @@
+import PropTypes from 'prop-types';
 import React from 'react';
-import { getCategories } from '../services/api';
 import SideItem from './SideBarItem';
 
 class SideBar extends React.Component {
-  constructor() {
-    super();
-    this.state = { categoriesList: [] };
-  }
-
-  componentDidMount() {
-    this.fetchCategories();
-  }
-
-  fetchCategories = async () => {
-    const getCategoriesList = await getCategories();
-    this.setState({
-      categoriesList: getCategoriesList,
-    });
-    // return getCategoriesList;
-    // return console.log(getCategoriesList);
-  }
-
   render() {
-    const { categoriesList } = this.state;
+    const { categoriesList, handleClick, categoryClick } = this.props;
     return (
       <div>
         {
           categoriesList.map((category) => (
             <SideItem
               key={ category.id }
+              handleClick={ handleClick }
+              categoryClick={ categoryClick }
+              categoryId={ category.id }
               categoryName={ category.name }
             />
           ))
@@ -37,5 +22,11 @@ class SideBar extends React.Component {
     );
   }
 }
+
+SideBar.propTypes = {
+  categoriesList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  handleClick: PropTypes.func.isRequired,
+  categoryClick: PropTypes.func.isRequired,
+};
 
 export default SideBar;
