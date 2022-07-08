@@ -1,15 +1,16 @@
-// req5
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class ProductCard extends Component {
   render() {
-    const { name, img, price } = this.props;
+    const { name, img, price, id } = this.props;
     return (
       <div data-testid="product">
         <p>{ name }</p>
         <img src={ img } alt={ name } />
         <p>{price}</p>
+        <Link to={ `/product/${id}` }>Comprar</Link>
       </div>
     );
   }
@@ -18,6 +19,7 @@ class ProductCard extends Component {
 ProductCard.propTypes = {
   name: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
 };
 

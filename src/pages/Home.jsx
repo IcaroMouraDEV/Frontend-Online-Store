@@ -17,10 +17,12 @@ class Home extends React.Component {
   handleClick = async () => {
     const { searchValue, categoryValue } = this.state;
     const res = await getProductsFromCategoryAndQuery(categoryValue, searchValue);
+    console.log(res);
     const products = res.results.map((product) => ({
       name: product.title,
       img: product.thumbnail,
       price: product.price,
+      id: product.id,
     }));
     this.setState({ products, searched: true });
   }
