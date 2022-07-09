@@ -17,6 +17,7 @@ class Product extends React.Component {
     const { match } = this.props;
     const { id } = match.params;
     const product = await getProduct(id);
+    console.log(id);
     this.setState({ product, loading: false });
   }
 
