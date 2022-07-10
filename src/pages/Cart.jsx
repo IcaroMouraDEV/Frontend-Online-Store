@@ -5,34 +5,44 @@ class Cart extends React.Component {
   constructor() {
     super();
     this.state = {
-      carrinho: [],
+      cart: [],
     };
   }
 
   componentDidMount() {
-    if (!JSON.parse(localStorage.getItem('produto'))) {
-      localStorage.setItem('produto', JSON.stringify([]));
+    if (!JSON.parse(localStorage.getItem('carrinho'))) {
+      localStorage.setItem('carrinho', JSON.stringify([]));
     }
-    const carrinho = JSON.parse(localStorage.getItem('produto'));
-    this.setState({ carrinho });
+    const cart = JSON.parse(localStorage.getItem('carrinho'));
+    this.setState({ cart });
   }
 
   render() {
-    const { carrinho } = this.state;
-    console.log(carrinho);
+    const { cart } = this.state;
     return (
       <div>
         {
-          carrinho.length === 0
+          cart.length === 0
             ? <h1 data-testid="shopping-cart-empty-message">Seu carrinho está vazio</h1>
             : (
 
-              carrinho.map((produtos) => (
+              cart.map((produtos, i) => (
                 <>
-                  <p key={ produtos } />
+                  <p key={ i } />
                   <p data-testid="shopping-cart-product-name">
                     {' '}
-                    {produtos.name}
+                    {produtos[0]}
+                  </p>
+                  <p>
+
+                    Preço:
+                    {' '}
+                    {produtos[2]}
+
+                  </p>
+                  <p data-testid="shopping-cart-product-quantity">
+                    Quantidade:
+                    {cart.length}
                   </p>
                 </>
               ))

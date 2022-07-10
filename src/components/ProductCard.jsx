@@ -24,8 +24,6 @@ class ProductCard extends Component {
     ];
     const produto = JSON.parse(localStorage.getItem('carrinho'));
     this.setLocalStorage([...produto, data]);
-    console.log(data);
-    console.log(produto);
   }
 
   render() {
