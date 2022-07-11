@@ -11,6 +11,9 @@ class Product extends React.Component {
 
   componentDidMount() {
     this.fetchProduct();
+    if (!JSON.parse(localStorage.getItem('carrinho'))) {
+      localStorage.setItem('carrinho', JSON.stringify([]));
+    }
   }
 
   fetchProduct = async () => {
@@ -21,6 +24,25 @@ class Product extends React.Component {
     this.setState({ product, loading: false });
   }
 
+  setLocalStorage = (item) => {
+    localStorage.setItem('carrinho', JSON.stringify(item));
+  }
+
+  handleClick = () => {
+    const { product } = this.state;
+    const data = [
+      {
+        name: product.title,
+        img: product.thumbnail,
+        price: product.price,
+        id: product.id,
+        amount: 1,
+      },
+    ];
+    const produto = JSON.parse(localStorage.getItem('carrinho'));
+    this.setLocalStorage([...produto, ...data]);
+  }
+
   render() {
     const { product, loading } = this.state;
     return (
@@ -28,9 +50,16 @@ class Product extends React.Component {
         {
           loading ? <Loading /> : (
             <>
-              <h1 data-testid="product-detail-name">{product.title}</h1>
-              <img src={ product.thumbnail } alt={ product.title } />
-              <p>{product.price}</p>
+              <div className="product-data">
+                <h1 data-testid="product-detail-name">{product.title}</h1>
+                <img src={ product.thumbnail } alt={ product.title } />
+                <p>{product.price}</p>
+              </div>
+              <div className="add-to-cart">
+                <button type="button" onClick={ this.handleClick }>
+                  Adicionar ao carrinho
+                </button>
+              </div>
             </>
           )
         }
