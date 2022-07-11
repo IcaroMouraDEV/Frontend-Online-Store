@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import Header from '../components/Header';
 import Loading from '../components/Loading';
 import { getProduct } from '../services/api';
 
@@ -46,24 +47,31 @@ class Product extends React.Component {
   render() {
     const { product, loading } = this.state;
     return (
-      <div className="product">
-        {
-          loading ? <Loading /> : (
-            <>
-              <div className="product-data">
-                <h1 data-testid="product-detail-name">{product.title}</h1>
-                <img src={ product.thumbnail } alt={ product.title } />
-                <p>{product.price}</p>
-              </div>
-              <div className="add-to-cart">
-                <button type="button" onClick={ this.handleClick }>
-                  Adicionar ao carrinho
-                </button>
-              </div>
-            </>
-          )
-        }
-      </div>
+      <>
+        <Header />
+        <div className="product">
+          {
+            loading ? <Loading /> : (
+              <>
+                <div className="product-data">
+                  <h1 data-testid="product-detail-name">{product.title}</h1>
+                  <img src={ product.thumbnail } alt={ product.title } />
+                  <p>{product.price}</p>
+                </div>
+                <div className="add-to-cart">
+                  <button
+                    type="button"
+                    data-testid="product-detail-add-to-cart"
+                    onClick={ this.handleClick }
+                  >
+                    Adicionar ao carrinho
+                  </button>
+                </div>
+              </>
+            )
+          }
+        </div>
+      </>
     );
   }
 }

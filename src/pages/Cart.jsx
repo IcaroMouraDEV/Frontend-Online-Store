@@ -19,7 +19,6 @@ class Cart extends React.Component {
 
   render() {
     const { cart } = this.state;
-    console.log(cart);
     return (
       <div>
         {
