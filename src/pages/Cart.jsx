@@ -30,19 +30,11 @@ class Cart extends React.Component {
                 <>
                   <p key={ i } />
                   <p data-testid="shopping-cart-product-name">
-                    {' '}
-                    {produtos[0]}
+                    {produtos.name}
                   </p>
-                  <p>
-
-                    Preço:
-                    {' '}
-                    {produtos[2]}
-
-                  </p>
+                  <p>{`Preço: ${produtos.price}`}</p>
                   <p data-testid="shopping-cart-product-quantity">
-                    Quantidade:
-                    {cart.length}
+                    {`Quantidade: ${produtos.amount}`}
                   </p>
                 </>
               ))
