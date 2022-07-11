@@ -17,6 +17,20 @@ class Cart extends React.Component {
     this.setState({ cart });
   }
 
+  handleClick = ({ target }, operator) => {
+    const { cart } = this.state;
+    const value = target.parentNode.id;
+    const data = cart.find((product) => product.id === value);
+    const newCart = cart.filter((product) => {
+      if (product.id !== value) { return data; }
+      return product;
+    });
+    if (operator) { data.amount += 1; }
+    if (operator === false && data.amount > 1) { data.amount -= 1; }
+    this.setState({ cart: newCart });
+    localStorage.setItem('carrinho', JSON.stringify(newCart));
+  }
+
   render() {
     const { cart } = this.state;
     return (
@@ -26,17 +40,32 @@ class Cart extends React.Component {
             ? <h1 data-testid="shopping-cart-empty-message">Seu carrinho está vazio</h1>
             : (
 
-              cart.map((produtos, i) => (
-                <>
-                  <p key={ i } />
+              cart.map((produtos) => (
+                <div key={ produtos.id }>
                   <p data-testid="shopping-cart-product-name">
                     {produtos.name}
                   </p>
                   <p>{`Preço: ${produtos.price}`}</p>
-                  <p data-testid="shopping-cart-product-quantity">
-                    {`Quantidade: ${produtos.amount}`}
-                  </p>
-                </>
+                  <div className="amount" id={ produtos.id }>
+                    <button
+                      type="button"
+                      data-testid="product-decrease-quantity"
+                      onClick={ (event) => this.handleClick(event, false) }
+                    >
+                      -
+                    </button>
+                    <p data-testid="shopping-cart-product-quantity">
+                      {produtos.amount}
+                    </p>
+                    <button
+                      type="button"
+                      data-testid="product-increase-quantity"
+                      onClick={ (event) => this.handleClick(event, true) }
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
               ))
             )
         }
