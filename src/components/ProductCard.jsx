@@ -16,14 +16,18 @@ class ProductCard extends Component {
 
   handleClick = () => {
     const { name, img, price, id } = this.props;
+    const amount = 1;
     const data = [
-      name,
-      img,
-      price,
-      id,
+      {
+        name,
+        img,
+        price,
+        id,
+        amount,
+      },
     ];
     const produto = JSON.parse(localStorage.getItem('carrinho'));
-    this.setLocalStorage([...produto, data]);
+    this.setLocalStorage([...produto, ...data]);
   }
 
   render() {
