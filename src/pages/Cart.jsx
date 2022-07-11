@@ -21,11 +21,14 @@ class Cart extends React.Component {
     const { cart } = this.state;
     const value = target.parentNode.id;
     const data = cart.find((product) => product.id === value);
-    const newCart = cart.filter((product) => product.id !== value);
+    const newCart = cart.filter((product) => {
+      if (product.id !== value) { return data; }
+      return product;
+    });
     if (operator) { data.amount += 1; }
     if (operator === false && data.amount > 1) { data.amount -= 1; }
-    this.setState({ cart: [data, ...newCart] });
-    localStorage.setItem('carrinho', JSON.stringify([data, ...newCart]));
+    this.setState({ cart: newCart });
+    localStorage.setItem('carrinho', JSON.stringify(newCart));
   }
 
   render() {
