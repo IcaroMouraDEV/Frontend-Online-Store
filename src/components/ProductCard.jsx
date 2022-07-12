@@ -15,7 +15,7 @@ class ProductCard extends Component {
   }
 
   handleClick = () => {
-    const { name, img, price, id, stock } = this.props;
+    const { name, img, price, id, stock, shipping } = this.props;
     const amount = 1;
     const data = [
       {
@@ -25,6 +25,7 @@ class ProductCard extends Component {
         id,
         amount,
         stock,
+        shipping,
       },
     ];
     const produto = JSON.parse(localStorage.getItem('carrinho'));
@@ -32,14 +33,14 @@ class ProductCard extends Component {
   }
 
   render() {
-    const { name, img, price, id } = this.props;
+    const { name, img, price, id, shipping } = this.props;
     return (
       <div data-testid="product">
         <p>{name}</p>
         <img src={ img } alt={ name } />
         <p>{price}</p>
         <Link data-testid="product-detail-link" to={ `/product/${id}` }>Descrição</Link>
-
+        { shipping && <p data-testid="free-shipping">Frete Grátis</p> }
         <button
           data-testid="product-add-to-cart"
           type="button"
@@ -58,6 +59,7 @@ ProductCard.propTypes = {
   id: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   stock: PropTypes.number.isRequired,
+  shipping: PropTypes.bool.isRequired,
 };
 
 export default ProductCard;
