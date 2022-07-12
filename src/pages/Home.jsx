@@ -22,6 +22,7 @@ class Home extends React.Component {
       img: product.thumbnail,
       price: product.price,
       id: product.id,
+      stock: product.available_quantity,
     }));
     this.setState({ products, searched: true });
   }

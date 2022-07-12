@@ -15,7 +15,7 @@ class ProductCard extends Component {
   }
 
   handleClick = () => {
-    const { name, img, price, id } = this.props;
+    const { name, img, price, id, stock } = this.props;
     const amount = 1;
     const data = [
       {
@@ -24,6 +24,7 @@ class ProductCard extends Component {
         price,
         id,
         amount,
+        stock,
       },
     ];
     const produto = JSON.parse(localStorage.getItem('carrinho'));
@@ -56,6 +57,7 @@ ProductCard.propTypes = {
   img: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  stock: PropTypes.number.isRequired,
 };
 
 export default ProductCard;
