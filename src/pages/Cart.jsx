@@ -30,7 +30,7 @@ class Cart extends React.Component {
     if (operator) { data.amount += 1; }
     if (operator === false && data.amount > 1) { data.amount -= 1; }
     this.setState({ cart: newCart });
-    localStorage.setItem('carrinho', JSON.stringify(newCart));
+    localStorage.getItem('carrinho', JSON.stringify(newCart));
   }
 
   render() {
