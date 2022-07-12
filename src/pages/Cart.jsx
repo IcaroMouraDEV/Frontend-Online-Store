@@ -28,7 +28,7 @@ class Cart extends React.Component {
     if (operator) { data.amount += 1; }
     if (operator === false && data.amount > 1) { data.amount -= 1; }
     this.setState({ cart: newCart });
-    localStorage.setItem('carrinho', JSON.stringify(newCart));
+    localStorage.getItem('carrinho', JSON.stringify(newCart));
   }
 
   render() {
@@ -45,7 +45,7 @@ class Cart extends React.Component {
                   <p data-testid="shopping-cart-product-name">
                     {produtos.name}
                   </p>
-                  <p>{`Preço: ${produtos.price}`}</p>
+                  <p>{`Valor: R$${(produtos.price * produtos.amount)}`}</p>
                   <div className="amount" id={ produtos.id }>
                     <button
                       type="button"
