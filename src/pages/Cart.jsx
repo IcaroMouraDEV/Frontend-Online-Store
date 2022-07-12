@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Header from '../components/Header';
 // import PropTypes from 'prop-types';
 
 class Cart extends React.Component {
@@ -70,7 +72,54 @@ class Cart extends React.Component {
             )
         }
       </div>
-
+      <>
+        <Header />
+        <main className="cart">
+          <div className="cart-items">
+            {
+              cart.length === 0
+                ? (
+                  <h1 data-testid="shopping-cart-empty-message">
+                    Seu carrinho está vazio
+                  </h1>
+                ) : (
+                  cart.map((produtos) => (
+                    <div key={ produtos.id }>
+                      <p data-testid="shopping-cart-product-name">
+                        {produtos.name}
+                      </p>
+                      <p>{`Preço: ${produtos.price}`}</p>
+                      <div className="amount" id={ produtos.id }>
+                        <button
+                          type="button"
+                          data-testid="product-decrease-quantity"
+                          onClick={ (event) => this.handleClick(event, false) }
+                        >
+                          -
+                        </button>
+                        <p data-testid="shopping-cart-product-quantity">
+                          {produtos.amount}
+                        </p>
+                        <button
+                          type="button"
+                          data-testid="product-increase-quantity"
+                          onClick={ (event) => this.handleClick(event, true) }
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  ))
+                )
+            }
+          </div>
+          <div className="checkout">
+            <Link to="/cart/checkout" data-testid="checkout-products">
+              Finalizar Compra
+            </Link>
+          </div>
+        </main>
+      </>
     );
   }
 }
