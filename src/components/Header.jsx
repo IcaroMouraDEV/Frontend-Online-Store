@@ -1,10 +1,13 @@
-import { Link } from 'react-router-dom';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Header extends React.Component {
   render() {
     return (
-      <Link data-testid="shopping-cart-button" to="/carrinho">Carrinho</Link>
+      <header>
+        <Link to="/">Home</Link>
+        <Link data-testid="shopping-cart-button" to="/cart">Carrinho</Link>
+      </header>
     );
   }
 }
