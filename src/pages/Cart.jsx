@@ -36,42 +36,6 @@ class Cart extends React.Component {
   render() {
     const { cart } = this.state;
     return (
-      <div>
-        {
-          cart.length === 0
-            ? <h1 data-testid="shopping-cart-empty-message">Seu carrinho está vazio</h1>
-            : (
-
-              cart.map((produtos) => (
-                <div key={ produtos.id }>
-                  <p data-testid="shopping-cart-product-name">
-                    {produtos.name}
-                  </p>
-                  <p>{`Valor: R$${(produtos.price * produtos.amount)}`}</p>
-                  <div className="amount" id={ produtos.id }>
-                    <button
-                      type="button"
-                      data-testid="product-decrease-quantity"
-                      onClick={ (event) => this.handleClick(event, false) }
-                    >
-                      -
-                    </button>
-                    <p data-testid="shopping-cart-product-quantity">
-                      {produtos.amount}
-                    </p>
-                    <button
-                      type="button"
-                      data-testid="product-increase-quantity"
-                      onClick={ (event) => this.handleClick(event, true) }
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-              ))
-            )
-        }
-      </div>
       <>
         <Header />
         <main className="cart">
