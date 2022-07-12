@@ -71,6 +71,7 @@ class Product extends React.Component {
         id: product.id,
         amount: 1,
         stock: product.available_quantity,
+        shipping: product.shipping.free_shipping,
       },
     ];
     const produto = JSON.parse(localStorage.getItem('carrinho'));

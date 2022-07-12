@@ -23,6 +23,7 @@ class Home extends React.Component {
       price: product.price,
       id: product.id,
       stock: product.available_quantity,
+      shipping: product.shipping.free_shipping,
     }));
     this.setState({ products, searched: true });
   }
