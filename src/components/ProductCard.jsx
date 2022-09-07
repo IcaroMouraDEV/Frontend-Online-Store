@@ -35,20 +35,21 @@ class ProductCard extends Component {
   render() {
     const { name, img, price, id, shipping } = this.props;
     return (
-      <div data-testid="product">
-        <p>{name}</p>
-        <img src={ img } alt={ name } />
-        <p>{price}</p>
-        <Link data-testid="product-detail-link" to={ `/product/${id}` }>Descrição</Link>
-        { shipping && <p data-testid="free-shipping">Frete Grátis</p> }
-        <button
-          data-testid="product-add-to-cart"
-          type="button"
-          onClick={ this.handleClick }
-        >
-          Adicina ao carrinho
-        </button>
-      </div>
+      <Link data-testid="product-detail-link" to={ `/product/${id}` }>
+        <div data-testid="product" className="product-item">
+          <p>{name}</p>
+          <img src={ img } alt={ name } />
+          <p>{price}</p>
+          { shipping && <p data-testid="free-shipping">Frete Grátis</p> }
+          <button
+            data-testid="product-add-to-cart"
+            type="button"
+            onClick={ this.handleClick }
+          >
+            Adicina ao carrinho
+          </button>
+        </div>
+      </Link>
     );
   }
 }

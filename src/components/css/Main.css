@@ -1,0 +1,44 @@
+.main {
+  width: 80vw;
+}
+
+.search-bar {
+  text-align: center;
+}
+
+.search-input {
+  padding: 2.5px 10px;
+}
+
+.search-btn {
+  padding: 2.5px 10px;
+}
+
+.text {
+  text-align: center;
+}
+
+.product-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px 0;
+  justify-content: space-around;
+  padding: 20px 10px;
+}
+
+.product-wrapper .product-item {
+  border: 1px solid #121212;
+  color: black;
+  height: 100%;
+  padding: 10px;
+  text-align: center;
+  width: 20vw;
+}
+
+.product-wrapper .product-item img {
+  height: 100px;
+}
+
+a {
+  text-decoration: none;
+}

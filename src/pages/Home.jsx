@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Main from '../components/Main';
 import SideBar from '../components/SideBar';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
+import './css/Home.css';
 
 class Home extends React.Component {
   constructor() {
@@ -49,15 +50,15 @@ class Home extends React.Component {
       <>
         <Header />
         <div className="flex">
-          <Main
-            { ...toMain }
-            handleClick={ this.handleClick }
-            handleChange={ this.handleChange }
-          />
           <SideBar
             { ...toSide }
             handleClick={ this.handleClick }
             categoryClick={ this.categoryClick }
+          />
+          <Main
+            { ...toMain }
+            handleClick={ this.handleClick }
+            handleChange={ this.handleChange }
           />
         </div>
       </>
