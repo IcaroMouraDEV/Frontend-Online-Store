@@ -25,6 +25,7 @@ class Home extends React.Component {
       id: product.id,
       stock: product.available_quantity,
       shipping: product.shipping.free_shipping,
+      coin: product.currency_id,
     }));
     this.setState({ products, searched: true });
   }

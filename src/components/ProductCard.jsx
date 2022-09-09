@@ -33,15 +33,16 @@ class ProductCard extends Component {
   }
 
   render() {
-    const { name, img, price, id, shipping } = this.props;
+    const { name, img, price, id, shipping, coin } = this.props;
     return (
       <Link data-testid="product-detail-link" to={ `/product/${id}` }>
         <div data-testid="product" className="product-item">
           <p>{name}</p>
           <img src={ img } alt={ name } />
-          <p>{price}</p>
+          <p>{`${price}${coin}`}</p>
           { shipping && <p data-testid="free-shipping">Frete Grátis</p> }
           <button
+            className="item-btn"
             data-testid="product-add-to-cart"
             type="button"
             onClick={ this.handleClick }
@@ -58,6 +59,7 @@ ProductCard.propTypes = {
   name: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  coin: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   stock: PropTypes.number.isRequired,
   shipping: PropTypes.bool.isRequired,
