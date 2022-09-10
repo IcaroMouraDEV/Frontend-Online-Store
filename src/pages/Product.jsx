@@ -139,10 +139,11 @@ class Product extends React.Component {
                   <div className="data-container">
                     <h3 data-testid="product-detail-name">{product.title}</h3>
                     <p>{`${product.price}${product.currency_id}`}</p>
-                    <div className="add-to-cart">
+                    <div className="btn-cart">
                       <button
-                        type="button"
+                        className="cart-btn"
                         data-testid="product-detail-add-to-cart"
+                        type="button"
                         onClick={ this.handleClick }
                       >
                         Adicionar ao carrinho
