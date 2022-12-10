@@ -18,8 +18,15 @@
   - Um sistema de busca de produtos por nome e/ou categoria
   - Os cards de produtos que aparecem na tela após a busca.
   
-  ![home_image](https://github.com/IcaroMouraDEV/Frontend-Online-Store/blob/main/image.png?raw=true)
+  *home sem pesquisa*
+  ![home_image](https://github.com/IcaroMouraDEV/Frontend-Online-Store/blob/main/images/home.png?raw=true)
   
+  *home pesquisando `mouse`*
+  ![home_search_mouse_image](https://github.com/IcaroMouraDEV/Frontend-Online-Store/blob/main/images/home_search_mouse.png?raw=true)
+
+  *home categoria `Agro`*
+  ![home_category_agro_image](https://github.com/IcaroMouraDEV/Frontend-Online-Store/blob/main/images/home_category_agro.png?raw=true)
+
 ### Desenvolver no Product
   - Os dados do produto.
   - Um sistema de avaliações ao produtos na Página Product
