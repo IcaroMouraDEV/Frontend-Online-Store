@@ -16,12 +16,25 @@ class Cart extends React.Component {
       localStorage.setItem('carrinho', JSON.stringify([]));
     }
     const cart = JSON.parse(localStorage.getItem('carrinho'));
-    this.setState({ cart });
+    const cartSorted = cart.sort((a, b) => {
+      const fa = a.id.toLowerCase();
+      const fb = b.id.toLowerCase();
+      const mgnum = -1;
+
+      if (fa < fb) return mgnum;
+      if (fa > fb) return 1;
+      return 0;
+    });
+    const newCart = cartSorted
+      .filter((value, index, self) => index === self.findIndex((t) => (
+        t.id === value.id && t.name === value.name
+      )));
+    console.log(newCart);
+    this.setState({ cart: newCart });
   }
 
   handleClick = ({ target }, operator) => {
     const { cart } = this.state;
-    console.log(cart);
     const value = target.parentNode.id;
     const data = cart.find((product) => product.id === value);
     const newCart = cart.filter((product) => {
@@ -33,6 +46,8 @@ class Cart extends React.Component {
     this.setState({ cart: newCart });
     localStorage.getItem('carrinho', JSON.stringify(newCart));
   }
+
+  removeItem = () => {};
 
   render() {
     const { cart } = this.state;
@@ -48,13 +63,15 @@ class Cart extends React.Component {
                     Seu carrinho está vazio
                   </h1>
                 ) : (
-                  cart.map((produtos) => (
-                    <div key={ produtos.id }>
+                  cart.map((product) => (
+                    <div key={ product.id }>
+                      <button type="button" onClick={ this.removeItem }>❌</button>
+                      <img src={ product.img } alt={ product.name } />
                       <p data-testid="shopping-cart-product-name">
-                        {produtos.name}
+                        {product.name}
                       </p>
-                      <p>{`Preço: ${produtos.price}`}</p>
-                      <div className="amount" id={ produtos.id }>
+                      <p>{`${product.price}${product.coin}`}</p>
+                      <div className="amount" id={ product.id }>
                         <button
                           type="button"
                           data-testid="product-decrease-quantity"
@@ -63,7 +80,7 @@ class Cart extends React.Component {
                           -
                         </button>
                         <p data-testid="shopping-cart-product-quantity">
-                          {produtos.amount}
+                          {product.amount}
                         </p>
                         <button
                           type="button"

@@ -95,9 +95,14 @@ class Product extends React.Component {
         amount: 1,
         stock: product.available_quantity,
         shipping: product.shipping.free_shipping,
+        coin: product.currency_id,
       },
     ];
+    console.log(data);
     const produto = JSON.parse(localStorage.getItem('carrinho'));
+    if (produto === null) {
+      return this.setLocalStorage([...data]);
+    }
     this.setLocalStorage([...produto, ...data]);
   }
 

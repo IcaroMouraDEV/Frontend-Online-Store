@@ -15,7 +15,7 @@ class ProductCard extends Component {
   }
 
   handleClick = () => {
-    const { name, img, price, id, stock, shipping } = this.props;
+    const { name, img, price, id, stock, shipping, coin } = this.props;
     const amount = 1;
     const data = [
       {
@@ -26,6 +26,7 @@ class ProductCard extends Component {
         amount,
         stock,
         shipping,
+        coin,
       },
     ];
     const produto = JSON.parse(localStorage.getItem('carrinho'));
