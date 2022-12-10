@@ -1,5 +1,15 @@
 # 🚧 README em construção 🚧
 
+# Frontend Online Store
+
+## Colaboradores
+
+- [Icaro Joel](https://github.com/icaroMouraDEV)
+- [Paulo Rubio](https://github.com/paulo-rubio)
+- [Cassio carvalho](https://github.com/cassio-carvalho)
+- [Ricardo](https://github.com/RicardoMD25)
+- [Garcia Gabos](https://github.com/GarciaGabos)
+
 <!-- Olá, Tryber!
 
 Esse é apenas um arquivo inicial para o README do seu projeto.
