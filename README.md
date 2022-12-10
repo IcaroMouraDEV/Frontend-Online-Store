@@ -18,7 +18,7 @@
   - Um sistema de busca de produtos por nome e/ou categoria
   - Os cards de produtos que aparecem na tela após a busca.
   
-  (https://github.com/IcaroMouraDEV/Frontend-Online-Store/blob/main/image.png?raw=true)
+  ![home_image](https://github.com/IcaroMouraDEV/Frontend-Online-Store/blob/main/image.png?raw=true)
   
 ### Desenvolver no Product
   - Os dados do produto.
