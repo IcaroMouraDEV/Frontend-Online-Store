@@ -1,5 +1,3 @@
-# 🚧 README em construção 🚧
-
 # Frontend Online Store
 
 ## Colaboradores
