@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import './css/SideBar.css';
 import SideItem from './SideBarItem';
 
 class SideBar extends React.Component {
   render() {
     const { categoriesList, handleClick, categoryClick } = this.props;
     return (
-      <div>
+      <div className="item-wrapper">
         {
           categoriesList.map((category) => (
             <SideItem

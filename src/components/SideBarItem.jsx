@@ -13,6 +13,7 @@ class SideItem extends React.Component {
     return (
       <div>
         <button
+          className="item"
           type="button"
           data-testid="category"
           id={ categoryId }

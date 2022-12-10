@@ -15,7 +15,7 @@ class ProductCard extends Component {
   }
 
   handleClick = () => {
-    const { name, img, price, id, stock, shipping } = this.props;
+    const { name, img, price, id, stock, shipping, coin } = this.props;
     const amount = 1;
     const data = [
       {
@@ -26,6 +26,7 @@ class ProductCard extends Component {
         amount,
         stock,
         shipping,
+        coin,
       },
     ];
     const produto = JSON.parse(localStorage.getItem('carrinho'));
@@ -33,22 +34,24 @@ class ProductCard extends Component {
   }
 
   render() {
-    const { name, img, price, id, shipping } = this.props;
+    const { name, img, price, id, shipping, coin } = this.props;
     return (
-      <div data-testid="product">
-        <p>{name}</p>
-        <img src={ img } alt={ name } />
-        <p>{price}</p>
-        <Link data-testid="product-detail-link" to={ `/product/${id}` }>Descrição</Link>
-        { shipping && <p data-testid="free-shipping">Frete Grátis</p> }
-        <button
-          data-testid="product-add-to-cart"
-          type="button"
-          onClick={ this.handleClick }
-        >
-          Adicina ao carrinho
-        </button>
-      </div>
+      <Link data-testid="product-detail-link" to={ `/product/${id}` }>
+        <div data-testid="product" className="product-item">
+          <p>{name}</p>
+          <img src={ img } alt={ name } />
+          <p>{`${price}${coin}`}</p>
+          { shipping && <p data-testid="free-shipping">Frete Grátis</p> }
+          <button
+            className="item-btn"
+            data-testid="product-add-to-cart"
+            type="button"
+            onClick={ this.handleClick }
+          >
+            Adicina ao carrinho
+          </button>
+        </div>
+      </Link>
     );
   }
 }
@@ -57,6 +60,7 @@ ProductCard.propTypes = {
   name: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  coin: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   stock: PropTypes.number.isRequired,
   shipping: PropTypes.bool.isRequired,
